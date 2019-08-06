@@ -9,7 +9,7 @@ const styleCarousel = {
 
 const stylePleb = {
   background: 'black',
-  width: '16vw',
+  width: '16vw',  // these dimensions can probably be removed once we have thumbnails so long as they are the right proportions
   height: '9vw',
 }
 
