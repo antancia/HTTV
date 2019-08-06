@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { white } from "ansi-colors";
 import content from "../content";
 
@@ -43,17 +43,41 @@ const SelectedCard = ({ content, children }) => {
 };
 
 export default function Carousel() {
+  const [currentContents, setCurrentContents] = useState(content);
+
+  function moveContentsForward(curr) {
+    const newContents = [...curr];
+    newContents.push(newContents.shift());
+    setCurrentContents(newContents);
+  }
+
+  function moveContentsBackward(curr) {
+    const newContents = [...curr];
+    newContents.unshift(newContents.pop());
+    setCurrentContents(newContents);
+  }
+
   return (
     <div style={styleCarousel}>
-      <h1 style={styleNavigationButtons}>&lt;</h1>
+      <h1
+        onClick={() => moveContentsForward(currentContents)}
+        style={styleNavigationButtons}
+      >
+        &lt;
+      </h1>
 
-      <ContentCard content={content[0]} />
-      <ContentCard content={content[1]} />
-      <SelectedCard content={content[2]} />
-      <ContentCard content={content[0]} />
-      <ContentCard content={content[1]} />
+      <ContentCard content={currentContents[0]} />
+      <ContentCard content={currentContents[1]} />
+      <SelectedCard content={currentContents[2]} />
+      <ContentCard content={currentContents[0]} />
+      <ContentCard content={currentContents[1]} />
 
-      <h1 style={styleNavigationButtons}>&gt;</h1>
+      <h1
+        onClick={() => moveContentsBackward(currentContents)}
+        style={styleNavigationButtons}
+      >
+        &gt;
+      </h1>
     </div>
   );
 }
