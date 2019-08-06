@@ -1,4 +1,10 @@
 import React from "react";
+import { white } from "ansi-colors";
+
+const styleNavigationButtons = {
+  color: 'white',
+  filter: 'drop-shadow(1px 3px 2px rgba(0, 0, 0, 0.5))',
+}
 
 const styleCarousel = {
   background: 'white',
@@ -22,7 +28,13 @@ const styleTheOne = {
 
 export default function Carousel() {
   return <div style={ styleCarousel }>
+    <h1 style={ styleNavigationButtons }>
+      &lt;
+    </h1>
     <div style={ stylePleb } />
     <div style={ styleTheOne } />
+    <h1 style={ styleNavigationButtons }>
+      &gt;
+    </h1>
   </div>;
 }
