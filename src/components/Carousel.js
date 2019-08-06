@@ -2,6 +2,15 @@ import React, { useState } from "react";
 import { white } from "ansi-colors";
 import content from "../content";
 
+const thumbnail = [
+  'https://www.placecage.com/1600/900',
+  'https://www.loremflickr.com/1600/900'
+]
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+
 const styleNavigationButtons = {
   color: "white",
   filter: "drop-shadow(1px 3px 2px rgba(0, 0, 0, 0.3))"
@@ -15,23 +24,47 @@ const styleCarousel = {
   alignItems: "center"
 };
 
+const styleThumbnail = {
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'flex-end',
+  backgroundSize: 'cover',
+  padding: '1rem',
+}
+
 const stylePleb = {
-  background: "black",
-  width: "16vw", // these dimensions can probably be removed once we have thumbnails so long as they are the right proportions
-  height: "9vw"
+  ...styleThumbnail,
+
+  backgroundImage: `url(${ thumbnail[getRandomInt(thumbnail.length)] })`,
+  width: "16vw",
+  height: "9vw",
 };
 
 const styleTheOne = {
-  background: "red",
+  ...styleThumbnail,
+
+  backgroundImage: `url(${ thumbnail[getRandomInt(thumbnail.length)] })`,
   width: "32vw",
-  height: "18vw"
+  height: "18vw",
 };
+
+const styleThumbnailText = {
+  color: 'white',
+  filter: "drop-shadow(1px 3px 2px rgba(0, 0, 0, 0.3))",
+  fontSize: '0.75rem',
+}
+
+const styleBold = {
+  fontSize: '1rem',
+}
+
+
 
 const ContentCard = ({ content, children }) => {
   return (
     <div style={stylePleb}>
-      <h5 style={{ color: "white" }}>{content.title}</h5>
-      <h6 style={{ color: "white" }}>{content.description}</h6>
+      <h2 style={styleThumbnailText}><strong style={styleBold}>{content.title}</strong></h2>
+      <h3 style={styleThumbnailText}>{content.description}</h3>
     </div>
   );
 };
@@ -45,8 +78,8 @@ const SelectedCard = ({ content, children }) => {
         Your browser does not support the <code>audio</code> element.
       </audio>
 
-      <h4>{content.title}</h4>
-      <h5>{content.description}</h5>
+      <h2 style={styleThumbnailText}><strong style={styleBold}>{content.title}</strong></h2>
+      <h3 style={styleThumbnailText}>{content.description}</h3>
     </div>
   );
 };
