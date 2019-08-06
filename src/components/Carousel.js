@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Sound from "react-sound";
 import { white } from "ansi-colors";
 import content from "../content";
 
@@ -37,13 +38,9 @@ const ContentCard = ({ content, children }) => {
 };
 
 const SelectedCard = ({ content, children }) => {
-  const placeHolderUrl = "";
   return (
     <div style={styleTheOne}>
-      <audio autoPlay loop>
-        <source src={placeHolderUrl} type="audio/ogg" />
-        Your browser does not support the <code>audio</code> element.
-      </audio>
+      <Sound url="../../public/assets/left.mp3" autoLoad />
 
       <h4>{content.title}</h4>
       <h5>{content.description}</h5>
