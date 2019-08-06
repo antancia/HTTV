@@ -1,6 +1,10 @@
-import React, { useState } from "react";
+import React, {
+  useState
+} from "react";
 import Sound from "react-sound";
-import { white } from "ansi-colors";
+import {
+  white
+} from "ansi-colors";
 import content from "../content";
 
 const thumbnail = [
@@ -60,30 +64,39 @@ const styleBold = {
 };
 
 const ContentCard = ({ content, children }) => {
-  return (
-    <div style={stylePleb}>
-      <h2 style={styleThumbnailText}>
-        <strong style={styleBold}>{content.title}</strong>
-      </h2>
-      <h3 style={styleThumbnailText}>{content.description}</h3>
-    </div>
+return (
+  <div style={stylePleb}>
+    <h2 style={styleThumbnailText}>
+      <strong style={styleBold}>{content.title}</strong>
+    </h2>
+    <h3 style={styleThumbnailText}>{content.description}</h3>
+  </div>
   );
 };
 
 const SelectedCard = ({ content, children }) => {
-  return (
-    <div style={styleTheOne}>
-      <Sound url="../../public/assets/left.mp3" autoLoad />
+return (
+  <div style={styleTheOne}>
+    <Sound url="../../public/assets/left.mp3" autoLoad />
 
-      <h2 style={styleThumbnailText}>
-        <strong style={styleBold}>{content.title}</strong>
-      </h2>
-      <h3 style={styleThumbnailText}>{content.description}</h3>
-    </div>
+    <h2 style={styleThumbnailText}>
+      <strong style={styleBold}>{content.title}</strong>
+    </h2>
+    <h3 style={styleThumbnailText}>{content.description}</h3>
+  </div>
   );
 };
 
 export default function Carousel() {
+  React.useEffect(() => {
+    document.addEventListener('keydown', e => {
+      if(e.key === 'ArrowLeft') shiftLeft();  // TODO: replace with working versions
+      if(e.key === 'ArrowRight') shiftRight();
+    });
+
+    // TODO: does this need to be destroyed somewhere
+  });
+
   const [currentContents, setCurrentContents] = useState(content);
 
   function shiftLeft(curr) {
@@ -110,6 +123,7 @@ export default function Carousel() {
       >
         &lt;
       </h1>
+
 
       <ContentCard content={currentContents[0]} />
       <ContentCard content={currentContents[1]} />
