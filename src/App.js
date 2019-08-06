@@ -14,12 +14,13 @@ const styleNav = {
 
 const styleLogo = {
   width: "5rem",
-  filter: "drop-shadow(1px 3px 6px rgba(0, 0, 0, 0.8))"
+  filter: "drop-shadow(1px 1px 5px rgba(0, 0, 0, 1))"
 };
 
 const styleFeatured = {
   width: "100%",
   height: "65vh",
+  objectFit: 'cover',
   background: "pink"
 };
 
@@ -29,7 +30,9 @@ function App() {
       <div style={styleNav}>
         <img style={styleLogo} src="../assets/logo.svg" alt="HTTV Logo" />
       </div>
-      <div style={styleFeatured} />
+      <div style={styleFeatured}>
+        <img style={styleFeatured} src="https://www.placecage.com/1600/900" alt="featured film" />
+      </div>
       <Carousel />
     </div>
   );
