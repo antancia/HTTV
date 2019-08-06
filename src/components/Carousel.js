@@ -89,27 +89,31 @@ export default function Carousel() {
   });
 
   const [showLineup, setShowLineup] = useState(content);
-  const firstShow = showLineup[0]
-  const lastShow = showLineup[showLineup.length - 1];
+  const firstShow = content[0]
+  const lastShow = content[content.length - 1];
 
-  function getSelectedShowIndex() { return Math.floor(showLineup.length/2) }
+  function getSelectedShowIndex() { return Math.ceil(showLineup.length/2) }  // TODO: idky this only works on left but not right or vice versa lol
   function getSelectedShow() { return showLineup[getSelectedShowIndex()] }
 
   function playSelectedShowMedia() {
+    // TODO: Make this properly wait until after navigation sound
+    // TODO: Also stop sound when moving on
     const soundUrl = getSelectedShow().soundUrl
-    if(soundUrl) new Audio(soundUrl).play();
+    if (soundUrl) setTimeout(_ => new Audio(soundUrl).play(), 400)
   }
 
   function playNavigationFx(whichFx) {
     const selectedTitle = getSelectedShow().title
+    console.log(selectedTitle)
+    console.log(firstShow.title)
     if(selectedTitle === firstShow.title || selectedTitle === lastShow.title) whichFx = 'outOfContent';
 
     const fx = new Audio(`assets/audio/${ whichFx }.mp3`);
     fx.play();
   }
 
-  function shiftLeft(curr) {
-    const newContents = [...curr];
+  function shiftLeft(currentLineup) {
+    const newContents = [...currentLineup];
     newContents.push(newContents.shift());
     setShowLineup(newContents);
 
@@ -117,8 +121,8 @@ export default function Carousel() {
     playNavigationFx('left');
   }
 
-  function shiftRight(curr) {
-    const newContents = [...curr];
+  function shiftRight(currentLineup) {
+    const newContents = [...currentLineup];
     newContents.unshift(newContents.pop());
     setShowLineup(newContents);
 
