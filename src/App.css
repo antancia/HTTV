@@ -2,6 +2,13 @@
 
 .App {
   font-family: 'Karla', sans-serif;
+  background: black;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  height: 100vh;
 }
 
 .App-logo {

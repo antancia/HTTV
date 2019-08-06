@@ -8,6 +8,7 @@ const styleNavigationButtons = {
 };
 
 const styleCarousel = {
+  marginBottom: '4rem',
   background: white,
   display: 'flex',
   justifyContent: 'space-around',
