@@ -1,5 +1,6 @@
 import React from "react";
 import { white } from "ansi-colors";
+import content from "../content";
 
 const styleNavigationButtons = {
   color: "white",
@@ -25,16 +26,32 @@ const styleTheOne = {
   height: "18vw"
 };
 
+const ContentCard = ({ content, children }) => {
+  return (
+    <div style={stylePleb}>
+      <h5 style={{ color: "white" }}>{content.title}</h5>
+    </div>
+  );
+};
+
+const SelectedCard = ({ content, children }) => {
+  return (
+    <div style={styleTheOne}>
+      <h4>{content.title}</h4>
+    </div>
+  );
+};
+
 export default function Carousel() {
   return (
     <div style={styleCarousel}>
       <h1 style={styleNavigationButtons}>&lt;</h1>
 
-      <div style={stylePleb} />
-      <div style={stylePleb} />
-      <div style={styleTheOne} />
-      <div style={stylePleb} />
-      <div style={stylePleb} />
+      <ContentCard content={content[0]} />
+      <ContentCard content={content[1]} />
+      <SelectedCard content={content[2]} />
+      <ContentCard content={content[0]} />
+      <ContentCard content={content[1]} />
 
       <h1 style={styleNavigationButtons}>&gt;</h1>
     </div>
