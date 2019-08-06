@@ -30,6 +30,7 @@ const ContentCard = ({ content, children }) => {
   return (
     <div style={stylePleb}>
       <h5 style={{ color: "white" }}>{content.title}</h5>
+      <h6 style={{ color: "white" }}>{content.description}</h6>
     </div>
   );
 };
@@ -38,6 +39,7 @@ const SelectedCard = ({ content, children }) => {
   return (
     <div style={styleTheOne}>
       <h4>{content.title}</h4>
+      <h5>{content.description}</h5>
     </div>
   );
 };
@@ -69,8 +71,8 @@ export default function Carousel() {
       <ContentCard content={currentContents[0]} />
       <ContentCard content={currentContents[1]} />
       <SelectedCard content={currentContents[2]} />
-      <ContentCard content={currentContents[0]} />
-      <ContentCard content={currentContents[1]} />
+      <ContentCard content={currentContents[3]} />
+      <ContentCard content={currentContents[4]} />
 
       <h1
         onClick={() => moveContentsBackward(currentContents)}

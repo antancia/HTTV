@@ -25,6 +25,24 @@ const content = [
     previewImgUrl: "",
     thumbnailImgUrl: "",
     genres: ["ROMANCE", "COMEDY"]
+  },
+  {
+    title: "Forage Wars",
+    description:
+      "A colorful collection of mushroom-seeking scavengers race to forage the finest fungi around before their competitors can.",
+    soundUrl: "",
+    previewImgUrl: "",
+    thumbnailImgUrl: "",
+    genres: ["REALITY"]
+  },
+  {
+    title: "Odd Sight",
+    description:
+      "Grab some tissues! The new fab five serve up hot tips such how to wipe your butt properly so that you don't smell like doo doo everywhere you go.",
+    soundUrl: "",
+    previewImgUrl: "",
+    thumbnailImgUrl: "",
+    genres: ["REALITY"]
   }
 ];
 
