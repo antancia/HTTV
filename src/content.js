@@ -1,6 +1,6 @@
 const content = [
   {
-    title: "St. Patrick's Price",
+    title: "St. Patrick's Prince",
     description:
       "Saint Patty’s Day comes early for an aspiring young bartender when she’s tasked with pinching a dashing prince who’s failed to wear green",
     soundUrl: "",
