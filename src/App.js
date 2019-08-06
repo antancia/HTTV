@@ -6,13 +6,15 @@ const url = "";
 
 const styleNav = {
   width: '100%',
-  height: '3rem',
+  height: '5rem',
   padding: '0 4rem',
+  display: 'flex',
+  alignContent: 'flex-start',
 }
 
 const styleLogo = {
-  height: '100%',
   width: '5rem',
+  filter: "drop-shadow(1px 3px 6px rgba(0, 0, 0, 0.8))",
 }
 
 function App() {

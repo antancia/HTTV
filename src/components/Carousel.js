@@ -4,7 +4,7 @@ import content from "../content";
 
 const styleNavigationButtons = {
   color: "white",
-  filter: "drop-shadow(1px 3px 2px rgba(0, 0, 0, 0.5))"
+  filter: "drop-shadow(1px 3px 2px rgba(0, 0, 0, 0.3))"
 };
 
 const styleCarousel = {
