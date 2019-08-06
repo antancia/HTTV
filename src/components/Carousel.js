@@ -4,9 +4,9 @@ import { white } from "ansi-colors";
 import content from "../content";
 
 const thumbnail = [
-  'https://www.placecage.com/1600/900',
-  'https://www.loremflickr.com/1600/900'
-]
+  "https://www.placecage.com/1600/900",
+  "https://www.loremflickr.com/1600/900"
+];
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
@@ -26,45 +26,45 @@ const styleCarousel = {
 };
 
 const styleThumbnail = {
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'flex-end',
-  backgroundSize: 'cover',
-  padding: '1rem',
-}
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "flex-end",
+  backgroundSize: "cover",
+  padding: "1rem"
+};
 
 const stylePleb = {
   ...styleThumbnail,
 
-  backgroundImage: `url(${ thumbnail[getRandomInt(thumbnail.length)] })`,
+  backgroundImage: `url(${thumbnail[getRandomInt(thumbnail.length)]})`,
   width: "16vw",
-  height: "9vw",
+  height: "9vw"
 };
 
 const styleTheOne = {
   ...styleThumbnail,
 
-  backgroundImage: `url(${ thumbnail[getRandomInt(thumbnail.length)] })`,
+  backgroundImage: `url(${thumbnail[getRandomInt(thumbnail.length)]})`,
   width: "32vw",
-  height: "18vw",
+  height: "18vw"
 };
 
 const styleThumbnailText = {
-  color: 'white',
+  color: "white",
   filter: "drop-shadow(1px 3px 2px rgba(0, 0, 0, 0.3))",
-  fontSize: '0.75rem',
-}
+  fontSize: "0.75rem"
+};
 
 const styleBold = {
-  fontSize: '1rem',
-}
-
-
+  fontSize: "1rem"
+};
 
 const ContentCard = ({ content, children }) => {
   return (
     <div style={stylePleb}>
-      <h2 style={styleThumbnailText}><strong style={styleBold}>{content.title}</strong></h2>
+      <h2 style={styleThumbnailText}>
+        <strong style={styleBold}>{content.title}</strong>
+      </h2>
       <h3 style={styleThumbnailText}>{content.description}</h3>
     </div>
   );
@@ -75,7 +75,9 @@ const SelectedCard = ({ content, children }) => {
     <div style={styleTheOne}>
       <Sound url="../../public/assets/left.mp3" autoLoad />
 
-      <h2 style={styleThumbnailText}><strong style={styleBold}>{content.title}</strong></h2>
+      <h2 style={styleThumbnailText}>
+        <strong style={styleBold}>{content.title}</strong>
+      </h2>
       <h3 style={styleThumbnailText}>{content.description}</h3>
     </div>
   );
@@ -84,22 +86,26 @@ const SelectedCard = ({ content, children }) => {
 export default function Carousel() {
   const [currentContents, setCurrentContents] = useState(content);
 
-  function moveContentsForward(curr) {
+  function shiftLeft(curr) {
+    const audio = new Audio("assets/audio/left.mp3");
     const newContents = [...curr];
     newContents.push(newContents.shift());
     setCurrentContents(newContents);
+    audio.play();
   }
 
-  function moveContentsBackward(curr) {
+  function shiftRight(curr) {
+    const audio = new Audio("assets/audio/right.mp3");
     const newContents = [...curr];
     newContents.unshift(newContents.pop());
     setCurrentContents(newContents);
+    audio.play();
   }
 
   return (
     <div style={styleCarousel}>
       <h1
-        onClick={() => moveContentsForward(currentContents)}
+        onClick={() => shiftLeft(currentContents)}
         style={styleNavigationButtons}
       >
         &lt;
@@ -112,7 +118,7 @@ export default function Carousel() {
       <ContentCard content={currentContents[4]} />
 
       <h1
-        onClick={() => moveContentsBackward(currentContents)}
+        onClick={() => shiftRight(currentContents)}
         style={styleNavigationButtons}
       >
         &gt;

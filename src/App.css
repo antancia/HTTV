@@ -1,14 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Karla&display=swap');
+html {
+  overflow-x: hidden;
+}
 
 .App {
   font-family: 'Karla', sans-serif;
   background: black;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  height: 100vh;
+  height: 100%;
 }
 
 .App-logo {
