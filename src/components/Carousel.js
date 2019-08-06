@@ -8,23 +8,23 @@ const styleNavigationButtons = {
 };
 
 const styleCarousel = {
-  marginBottom: '2rem',
+  marginBottom: "2rem",
   background: white,
-  display: 'flex',
-  justifyContent: 'space-around',
-  alignItems: 'center'
+  display: "flex",
+  justifyContent: "space-around",
+  alignItems: "center"
 };
 
 const stylePleb = {
-  background: 'black',
-  width: '16vw', // these dimensions can probably be removed once we have thumbnails so long as they are the right proportions
-  height: '9vw'
+  background: "black",
+  width: "16vw", // these dimensions can probably be removed once we have thumbnails so long as they are the right proportions
+  height: "9vw"
 };
 
 const styleTheOne = {
-  background: 'red',
-  width: '32vw',
-  height: '18vw'
+  background: "red",
+  width: "32vw",
+  height: "18vw"
 };
 
 const ContentCard = ({ content, children }) => {
@@ -37,8 +37,14 @@ const ContentCard = ({ content, children }) => {
 };
 
 const SelectedCard = ({ content, children }) => {
+  const placeHolderUrl = "";
   return (
     <div style={styleTheOne}>
+      <audio autoPlay loop>
+        <source src={placeHolderUrl} type="audio/ogg" />
+        Your browser does not support the <code>audio</code> element.
+      </audio>
+
       <h4>{content.title}</h4>
       <h5>{content.description}</h5>
     </div>
