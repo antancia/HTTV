@@ -1,10 +1,5 @@
-import React, {
-  useState
-} from "react";
-import Sound from "react-sound";
-import {
-  white
-} from "ansi-colors";
+import React, { useEffect, useState } from "react";
+import { white } from "ansi-colors";
 import content from "../content";
 
 const thumbnail = [
@@ -12,9 +7,7 @@ const thumbnail = [
   "https://www.loremflickr.com/1600/900"
 ];
 
-function getRandomInt(max) {
-  return Math.floor(Math.random() * Math.floor(max));
-}
+function getRandomInt(max) { return Math.floor(Math.random() * Math.floor(max)) }
 
 const styleNavigationButtons = {
   color: "white",
@@ -77,8 +70,6 @@ return (
 const SelectedCard = ({ content, children }) => {
 return (
   <div style={styleTheOne}>
-    <Sound url="../../public/assets/left.mp3" autoLoad />
-
     <h2 style={styleThumbnailText}>
       <strong style={styleBold}>{content.title}</strong>
     </h2>
@@ -88,7 +79,7 @@ return (
 };
 
 export default function Carousel() {
-  React.useEffect(() => {
+  useEffect(_ => {
     document.addEventListener('keydown', e => {
       if(e.key === 'ArrowLeft') shiftLeft();  // TODO: replace with working versions
       if(e.key === 'ArrowRight') shiftRight();
@@ -97,42 +88,62 @@ export default function Carousel() {
     // TODO: does this need to be destroyed somewhere
   });
 
-  const [currentContents, setCurrentContents] = useState(content);
+  const [showLineup, setShowLineup] = useState(content);
+  const firstShow = showLineup[0]
+  const lastShow = showLineup[showLineup.length - 1];
+
+  function getSelectedShowIndex() { return Math.floor(showLineup.length/2) }
+  function getSelectedShow() { return showLineup[getSelectedShowIndex()] }
+
+  function playSelectedShowMedia() {
+    const soundUrl = getSelectedShow().soundUrl
+    if(soundUrl) new Audio(soundUrl).play();
+  }
+
+  function playNavigationFx(whichFx) {
+    const selectedTitle = getSelectedShow().title
+    if(selectedTitle === firstShow.title || selectedTitle === lastShow.title) whichFx = 'outOfContent';
+
+    const fx = new Audio(`assets/audio/${ whichFx }.mp3`);
+    fx.play();
+  }
 
   function shiftLeft(curr) {
-    const audio = new Audio("assets/audio/left.mp3");
     const newContents = [...curr];
     newContents.push(newContents.shift());
-    setCurrentContents(newContents);
-    audio.play();
+    setShowLineup(newContents);
+
+    playSelectedShowMedia();
+    playNavigationFx('left');
   }
 
   function shiftRight(curr) {
-    const audio = new Audio("assets/audio/right.mp3");
     const newContents = [...curr];
     newContents.unshift(newContents.pop());
-    setCurrentContents(newContents);
-    audio.play();
+    setShowLineup(newContents);
+
+    playSelectedShowMedia();
+    playNavigationFx('right')
   }
 
   return (
     <div style={styleCarousel}>
       <h1
-        onClick={() => shiftLeft(currentContents)}
+        onClick={() => shiftLeft(showLineup)}
         style={styleNavigationButtons}
       >
         &lt;
       </h1>
 
 
-      <ContentCard content={currentContents[0]} />
-      <ContentCard content={currentContents[1]} />
-      <SelectedCard content={currentContents[2]} />
-      <ContentCard content={currentContents[3]} />
-      <ContentCard content={currentContents[4]} />
+      <ContentCard content={showLineup[0]} />
+      <ContentCard content={showLineup[1]} />
+      <SelectedCard content={showLineup[2]} />
+      <ContentCard content={showLineup[3]} />
+      <ContentCard content={showLineup[4]} />
 
       <h1
-        onClick={() => shiftRight(currentContents)}
+        onClick={() => shiftRight(showLineup)}
         style={styleNavigationButtons}
       >
         &gt;

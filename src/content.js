@@ -21,7 +21,7 @@ const content = [
     title: "Spring Rollin'",
     description:
       "She’s living life lying down. And she’s not alone. Because it takes two to make a burrito.",
-    soundUrl: "",
+    soundUrl: "assets/audio/springrollin.mp3",
     previewImgUrl: "",
     thumbnailImgUrl: "",
     genres: ["ROMANCE", "COMEDY"]
