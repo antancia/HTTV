@@ -3,7 +3,7 @@ const content = [
     title: "St. Patrick's Prince",
     description:
       "Saint Patty’s Day comes early for an aspiring young bartender when she’s tasked with pinching a dashing prince who’s failed to wear green",
-    soundUrl: "",
+    soundUrl: "assets/audio/stPatrickPrince.mp3",
     previewImgUrl: "",
     thumbnailImgUrl: "",
     genres: ["ROMANCE"]
@@ -38,8 +38,8 @@ const content = [
   {
     title: "Odd Sight",
     description:
-      "Grab some tissues! The new fab five serve up hot tips such how to wipe your butt properly so that you don't smell like doo doo everywhere you go.",
-    soundUrl: "",
+      "Grab some tissues! The new fab five serve up hot tips such how to wipe your butt properly (#frenchtuck!!) so that you don't smell like doo doo everywhere you go.",
+    soundUrl: "assets/audio/oddSight.mp3",
     previewImgUrl: "",
     thumbnailImgUrl: "",
     genres: ["REALITY"]

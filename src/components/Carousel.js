@@ -98,14 +98,17 @@ export default function Carousel() {
   function playSelectedShowMedia() {
     // TODO: Make this properly wait until after navigation sound
     // TODO: Also stop sound when moving on
+    // TODO: play audio on load
     const soundUrl = getSelectedShow().soundUrl
-    if (soundUrl) setTimeout(_ => new Audio(soundUrl).play(), 400)
+    if (soundUrl) {
+      const audio = new Audio(soundUrl);
+      // audio.loop = true;
+      audio.play()
+    }
   }
 
   function playNavigationFx(whichFx) {
     const selectedTitle = getSelectedShow().title
-    console.log(selectedTitle)
-    console.log(firstShow.title)
     if(selectedTitle === firstShow.title || selectedTitle === lastShow.title) whichFx = 'outOfContent';
 
     const fx = new Audio(`assets/audio/${ whichFx }.mp3`);
